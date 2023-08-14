@@ -1,0 +1,25 @@
+.containerDiv{
+    display: flex;
+    width: 60%;
+
+}
+.a{
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 100;
+
+
+}
+@media  (max-width: 900px) {
+    .containerDiv{
+        display: none;
+
+        
+    }
+   .a{
+            color: #000;
+        } 
+    
+}
