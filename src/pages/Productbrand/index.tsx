@@ -1,6 +1,5 @@
 import { useState, ChangeEvent, FormEvent } from 'react';
-import { Typography, TextField, Button,  } from '@mui/material';
-import axios from 'axios';
+import { Typography, Button,  } from '@mui/material';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -11,7 +10,6 @@ import { FiUpload } from 'react-icons/fi';
 export function ProductBrand() {
   
   const [imageAvatar, setImageAvatar] = useState<File | null>(null);
-  const [brandError, setBrandError] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState('');
 
     const handleBrandSubmit = (event: FormEvent) => {
@@ -37,7 +35,7 @@ export function ProductBrand() {
       });
 
       if(!imageAvatar){
-          setBrandError(true)
+         
           return
       }
      

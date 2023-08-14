@@ -3,7 +3,6 @@ import { TextField, Button, Typography, MenuItem } from '@mui/material';
 
 import { FiUpload } from 'react-icons/fi';
 import { ToastContainer, toast } from 'react-toastify';
-import axios from 'axios';
 import styles from './styles.module.scss';
 import { getImageUrl } from '../../Url';
 import { Api } from '../../Api';

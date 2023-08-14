@@ -1,6 +1,6 @@
 // EditCategoryModal.tsx
 import React, { useState, useEffect, ChangeEvent } from 'react';
-import { Modal, Button, TextField, Box } from '@mui/material';
+import { Modal, Button, Box } from '@mui/material';
 import { FiUpload } from 'react-icons/fi';
 import styles from './styles.module.scss';
 import { getImageUrl } from '../../Url';

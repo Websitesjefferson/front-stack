@@ -1,6 +1,6 @@
 // EditCategoryModal.tsx
 import React, { useState, useEffect } from 'react';
-import { Modal, Button, TextField, Typography, Box } from '@mui/material';
+import { Modal, Button, TextField, Box } from '@mui/material';
 
 type CategoryProps = {
   id: string;
