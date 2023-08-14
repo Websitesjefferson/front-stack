@@ -1,7 +1,6 @@
 import { FiEdit3, FiTrash } from 'react-icons/fi';
 
-import styles from './styles.module.scss';
-import { Card, CardContent, Typography, CardActions, Button } from '@mui/material';
+import { Card, CardContent, Typography} from '@mui/material';
 import { getImageUrl } from '../../Url';
 
 
