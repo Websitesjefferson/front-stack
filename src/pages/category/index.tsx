@@ -1,6 +1,7 @@
 import { useState, ChangeEvent, FormEvent } from 'react';
 import { Typography, TextField, Button,  } from '@mui/material';
 import { ToastContainer, toast } from 'react-toastify';
+import { Helmet } from 'react-helmet';
 import 'react-toastify/dist/ReactToastify.css';
 
 import styles from './styles.module.scss';
@@ -45,6 +46,9 @@ export function Category() {
 
   return (
     <>
+     <Helmet>
+      <title>Cadastrar categoria</title>
+    </Helmet>
     <div className={styles.Container}>
       <Typography variant="h2">Cadastrar categoria</Typography>
       <form onSubmit={handleSubmit}>

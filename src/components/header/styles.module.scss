@@ -12,6 +12,14 @@
 
 
 }
+.img {
+    width: 200px;
+    border-radius: 10px;
+    object-fit: cover;
+    height:  50px;
+    margin-top: 10px;
+    box-sizing: border-box;
+}
 @media  (max-width: 900px) {
     .containerDiv{
         display: none;

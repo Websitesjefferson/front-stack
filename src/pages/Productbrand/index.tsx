@@ -1,88 +1,91 @@
 import { useState, ChangeEvent, FormEvent } from 'react';
-import { Typography, Button,  } from '@mui/material';
+import { Typography, Button, } from '@mui/material';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import styles from './styles.module.scss';
 import { Api } from '../../Api';
 import { FiUpload } from 'react-icons/fi';
+import { Helmet } from 'react-helmet';
 
 export function ProductBrand() {
-  
+
   const [imageAvatar, setImageAvatar] = useState<File | null>(null);
   const [avatarUrl, setAvatarUrl] = useState('');
 
-    const handleBrandSubmit = (event: FormEvent) => {
-      event.preventDefault();
-      const data = new FormData()
-      if (imageAvatar) {
-        data.append('file', imageAvatar);
-      }
-    
+  const handleBrandSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    const data = new FormData()
+    if (imageAvatar) {
+      data.append('file', imageAvatar);
+    }
+
     Api.post('/brand', data)
-    .then((response) => {
+      .then((response) => {
         console.log(response.data);
         // tratamento da resposta do servidor
-         toast.success('Marca do produto cadastrada com sucesso!');
-        
-      setImageAvatar(null)
-      setAvatarUrl('')
-        
+        toast.success('Marca do produto cadastrada com sucesso!');
+
+        setImageAvatar(null)
+        setAvatarUrl('')
+
       })
       .catch((error) => {
         console.error('Erro ao enviar a categoria:', error);
         // Faça o tratamento do erro, se necessário
       });
 
-      if(!imageAvatar){
-         
-          return
-      }
-     
+    if (!imageAvatar) {
+
+      return
+    }
+
   };
- 
+
   function handleFile(e: ChangeEvent<HTMLInputElement>) {
     if (!e.target.files) {
-        return;
+      return;
     }
 
     const image = e.target.files[0];
 
     if (!image) {
-        return;
+      return;
     }
 
     if (image.type === 'image/jpeg' || image.type === 'image/png') {
-        setImageAvatar(image);
-        setAvatarUrl(URL.createObjectURL(e.target.files[0]));
+      setImageAvatar(image);
+      setAvatarUrl(URL.createObjectURL(e.target.files[0]));
     }
-}
+  }
 
 
   return (
     <>
-    
+      <Helmet>
+        <title>Cadastrar fornecedor</title>
+      </Helmet>
 
-    <div className={styles.Container}>
-      <Typography variant="h2">Cadastrar fornecedor</Typography>
-      <form onSubmit={handleBrandSubmit}>
-      <label className={styles.labelAvatar}>
-                            <span>
-                                <FiUpload size={30} color="black" />
-                            </span>
-                            <input type="file" accept="image/png, image/jpeg" onChange={handleFile} />
-                            {avatarUrl && 
-                            <img className={styles.preview} src={avatarUrl} alt="Foto do produto" />}
-                        </label>
-        <Button type="submit" variant="contained" color="primary">
-          Cadastrar
-        </Button>
-      </form>
+      <div className={styles.Container}>
+        <Typography variant="h2">Cadastrar fornecedor</Typography>
+        <form onSubmit={handleBrandSubmit}>
+          <label className={styles.labelAvatar}>
+            <span>
+              <FiUpload size={30} color="black" />
+            </span>
+            <input type="file" accept="image/png, image/jpeg" onChange={handleFile} />
+            {avatarUrl &&
+              <img className={styles.preview} src={avatarUrl} alt="Foto do produto" />}
+          </label>
+          <Button type="submit" variant="contained" color="primary">
+            Cadastrar
+          </Button>
+        </form>
 
-    
-      <ToastContainer />
 
-    </div>
+        <ToastContainer />
+
+      </div>
     </>
   );
 }

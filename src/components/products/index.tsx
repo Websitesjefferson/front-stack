@@ -2,7 +2,7 @@ import { FiEdit3, FiTrash } from 'react-icons/fi';
 
 import { Card, CardContent, Typography} from '@mui/material';
 import { getImageUrl } from '../../Url';
-
+import styles from './styles.module.scss';
 
 interface ProductPlate {
   id: string;
@@ -38,9 +38,9 @@ export function Product({
   return (
     <Card sx={{ minWidth: 200, maxWidth: 300, minHeight: 450, maxHeight: '%100', background: '#DCDCDC' }}>
 
-      <div>
+      <div className={styles.Container}>
 
-        <img src={getImageUrl(product.banner)} alt={product.name} />
+        <img className={styles.imgLogo} src={getImageUrl(product.banner)} alt={product.name} />
       </div>
       <CardContent sx={{color: ' #3d3d4d'}}>
         <h2>{product.name}</h2>

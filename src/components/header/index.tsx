@@ -6,7 +6,7 @@ import styles from './styles.module.scss';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link } from 'react-router-dom'
 
-
+import Logo from '../../assets/logon.png'
 export default function Header() {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -19,7 +19,7 @@ export default function Header() {
       <AppBar >
         <Toolbar> 
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Controle de Estoque
+              <img className={styles.img} src={Logo} alt="" />
           </Typography>
           <Hidden mdUp implementation="css">
             {/* O ícone do menu só será exibido em telas menores ou iguais a 900 pixels */}

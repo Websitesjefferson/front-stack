@@ -1,6 +1,6 @@
 import { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import { TextField, Button, Typography, MenuItem } from '@mui/material';
-
+import { Helmet } from 'react-helmet';
 import { FiUpload } from 'react-icons/fi';
 import { ToastContainer, toast } from 'react-toastify';
 import styles from './styles.module.scss';
@@ -102,8 +102,8 @@ export function newProduct({ List }: CategoryProps) {
 
             await Api.post('/product', data);
             toast.success('Cadastrado com sucesso!');
-            
-           
+
+
         } catch (err) {
             console.log(err);
             toast.error('Ops erro ao cadastrar!');
@@ -128,99 +128,103 @@ export function newProduct({ List }: CategoryProps) {
 
     return (
         <>
-           
-                <main className={styles.container}>
-                    <Typography variant="h4">Novo produto</Typography>
 
-                    <form className={styles.form} onSubmit={handleRegister}>
-                        <label className={styles.labelAvatar}>
-                            <span>
-                                <FiUpload size={30} color="black" />
-                            </span>
-                            <input type="file" accept="image/png, image/jpeg" onChange={handleFile} />
-                            {avatarUrl && <img className={styles.preview} src={avatarUrl} alt="Foto do produto" />}
-                        </label>
+            <Helmet>
+                <title>Cadastrar Produto</title>
+            </Helmet>
 
-                        <TextField
-                            select
-                            label="Selecione uma categoria"
-                            value={categorySelected}
-                            onChange={handleChangeCategory}
-                            sx={{ marginBottom: (theme) => theme.spacing(3) }}
-                            error={categoryError}
-                            helperText={categoryError && 'Categoria é obrigatória'}
-                        >
-                            {categories.map((item, index) => (
-                                <MenuItem key={item.id} value={index}>
-                                    {item.name}
-                                </MenuItem>
-                            ))}
-                        </TextField>
+            <main className={styles.container}>
+                <Typography variant="h4">Novo produto</Typography>
 
-                        <TextField
-                            select
-                            label="Selecione um fornecedor"
-                            value={brandSelected}
-                            onChange={handleChangeBrand}
-                            sx={{ marginBottom: (theme) => theme.spacing(3) }}
-                            error={brandError}
-                            helperText={brandError && 'Fornecedor é obrigatório'}
-                        >
-                            {brand.map((item, index) => (
-                                <MenuItem key={item.id} value={index}>
-                                    <img style={{width: '40px', objectFit: 'cover'}} src={getImageUrl(item.name)} alt="" /> 
-                                </MenuItem>
-                            ))}
-                        </TextField>
+                <form className={styles.form} onSubmit={handleRegister}>
+                    <label className={styles.labelAvatar}>
+                        <span>
+                            <FiUpload size={30} color="black" />
+                        </span>
+                        <input type="file" accept="image/png, image/jpeg" onChange={handleFile} />
+                        {avatarUrl && <img className={styles.preview} src={avatarUrl} alt="Foto do produto" />}
+                    </label>
 
-                        <TextField
-                            error={nameError}
+                    <TextField
+                        select
+                        label="Selecione uma categoria"
+                        value={categorySelected}
+                        onChange={handleChangeCategory}
+                        sx={{ marginBottom: (theme) => theme.spacing(3) }}
+                        error={categoryError}
+                        helperText={categoryError && 'Categoria é obrigatória'}
+                    >
+                        {categories.map((item, index) => (
+                            <MenuItem key={item.id} value={index}>
+                                {item.name}
+                            </MenuItem>
+                        ))}
+                    </TextField>
 
-                            label="Digite o nome do produto"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            sx={{ marginBottom: (theme) => theme.spacing(3) }}
-                            helperText={nameError && 'Nome produto é obrigatório'}
-                        />
+                    <TextField
+                        select
+                        label="Selecione um fornecedor"
+                        value={brandSelected}
+                        onChange={handleChangeBrand}
+                        sx={{ marginBottom: (theme) => theme.spacing(3) }}
+                        error={brandError}
+                        helperText={brandError && 'Fornecedor é obrigatório'}
+                    >
+                        {brand.map((item, index) => (
+                            <MenuItem key={item.id} value={index}>
+                                <img style={{ width: '40px', objectFit: 'cover' }} src={getImageUrl(item.name)} alt="" />
+                            </MenuItem>
+                        ))}
+                    </TextField>
 
-                        <TextField
-                            error={priceError}
-                            label="Preço do produto"
-                            value={price}
-                            onChange={(e) => setPrice(e.target.value)}
-                            sx={{ marginBottom: (theme) => theme.spacing(3) }}
-                            helperText={priceError && 'Preço é obrigatório'}
-                        />
-                        <TextField
-                            error={amountError}
-                            label="Quantidade do produto"
-                            value={amount}
-                            onChange={(e) => setAmount(e.target.value)}
-                            sx={{ marginBottom: (theme) => theme.spacing(3) }}
-                            helperText={amountError && 'Quantidade é obrigatório'}
-                        />
+                    <TextField
+                        error={nameError}
 
-                        <TextField
-                            error={descriptionError}
-                            value={description}
-                            label="Descreva seu produto..."
-                            sx={{ marginBottom: (theme) => theme.spacing(3) }}
-                            onChange={(e) => setDescription(e.target.value)}
-                            multiline
-                            rows={4}
-                            helperText={descriptionError && 'Descrição é obrigatório'}
+                        label="Digite o nome do produto"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        sx={{ marginBottom: (theme) => theme.spacing(3) }}
+                        helperText={nameError && 'Nome produto é obrigatório'}
+                    />
 
-                        />
+                    <TextField
+                        error={priceError}
+                        label="Preço do produto"
+                        value={price}
+                        onChange={(e) => setPrice(e.target.value)}
+                        sx={{ marginBottom: (theme) => theme.spacing(3) }}
+                        helperText={priceError && 'Preço é obrigatório'}
+                    />
+                    <TextField
+                        error={amountError}
+                        label="Quantidade do produto"
+                        value={amount}
+                        onChange={(e) => setAmount(e.target.value)}
+                        sx={{ marginBottom: (theme) => theme.spacing(3) }}
+                        helperText={amountError && 'Quantidade é obrigatório'}
+                    />
 
-                        <Button className={styles.buttonAdd} type="submit" variant="contained" color="primary">
-                            Cadastrar
-                        </Button>
+                    <TextField
+                        error={descriptionError}
+                        value={description}
+                        label="Descreva seu produto..."
+                        sx={{ marginBottom: (theme) => theme.spacing(3) }}
+                        onChange={(e) => setDescription(e.target.value)}
+                        multiline
+                        rows={4}
+                        helperText={descriptionError && 'Descrição é obrigatório'}
 
-                    </form>
+                    />
 
-                </main>
-                <ToastContainer />
-           
+                    <Button className={styles.buttonAdd} type="submit" variant="contained" color="primary">
+                        Cadastrar
+                    </Button>
+
+                </form>
+
+            </main>
+            <ToastContainer />
+
         </>
     )
 }

@@ -11,6 +11,7 @@ import { EditCategoryModal  } from '../../components/modalCategory';
 import { EditProductModal } from '../../components/modalProduct'
 import { getImageUrl } from '../../Url';
 import { Api } from '../../Api';
+import { Helmet } from 'react-helmet';
 
 
 
@@ -240,6 +241,9 @@ useEffect(() => {
   
  return (
     <>
+     <Helmet>
+                <title>Lista de produtos</title>
+            </Helmet>
 
       <div className={styles.Div}>
         <div className={styles.Container} >
@@ -249,7 +253,7 @@ useEffect(() => {
             {
               categories.length === 0 && (
                 <span className={styles.text}>
-                  Nenhuma categoria cadastrada!!
+                  Nenhuma categoria cadastrada
                 </span>
               )}
 
@@ -308,7 +312,7 @@ useEffect(() => {
                           </Box>
                           <Box onClick={() => {
                             const shouldDelete = window.confirm(
-                              'Tem certeza que deseja deletar esta categoria?'
+                              'Tem certeza que deseja deletar?'
                             );
                             if (shouldDelete) {
                               deleteCategory(item.id);
@@ -337,7 +341,7 @@ useEffect(() => {
             {
               brand.length === 0 && (
                 <span className={styles.text}>
-                  Nenhum fornecedor cadastrado!
+                  Nenhum fornecedor cadastrado
                 </span>
               )}
 
@@ -394,7 +398,7 @@ useEffect(() => {
                          
                           <Box onClick={() => {
                             const shouldDelete = window.confirm(
-                              'Tem certeza que deseja deletar esta categoria?'
+                              'Tem certeza que deseja deletar?'
                             );
                             if (shouldDelete) {
                               deleteBrand(item.id);
