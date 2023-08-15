@@ -63,7 +63,7 @@ export function ProductBrand() {
   return (
     <>
       <Helmet>
-        <title>Cadastrar fornecedor</title>
+        <title>Cadastrar Fornecedor</title>
       </Helmet>
 
       <div className={styles.Container}>

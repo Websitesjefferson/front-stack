@@ -47,7 +47,7 @@ export function Category() {
   return (
     <>
      <Helmet>
-      <title>Cadastrar categoria</title>
+      <title>Cadastrar Categoria</title>
     </Helmet>
     <div className={styles.Container}>
       <Typography variant="h2">Cadastrar categoria</Typography>

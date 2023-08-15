@@ -242,7 +242,7 @@ useEffect(() => {
  return (
     <>
      <Helmet>
-                <title>Lista de produtos</title>
+                <title>Lista de Produtos</title>
             </Helmet>
 
       <div className={styles.Div}>
