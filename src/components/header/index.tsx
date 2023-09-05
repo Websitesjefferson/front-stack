@@ -6,7 +6,7 @@ import styles from './styles.module.scss';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link } from 'react-router-dom'
 
-import Logo from '../../assets/Logon.png'
+import Logo from '../../assets/3.png'
 export default function Header() {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
